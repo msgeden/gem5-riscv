@@ -88,6 +88,9 @@ CPU::CPU(const BaseO3CPUParams &params)
 
       regFile(params.numPhysIntRegs,
               params.numPhysFloatRegs,
+              //MAC2CAP
+              params.numPhysCapRegs,
+              //MAC2CAP
               params.numPhysVecRegs,
               params.numPhysVecPredRegs,
               params.numPhysMatRegs,
@@ -197,6 +200,10 @@ CPU::CPU(const BaseO3CPUParams &params)
             numThreads * regClasses.at(IntRegClass)->numRegs());
     assert(params.numPhysFloatRegs >=
             numThreads * regClasses.at(FloatRegClass)->numRegs());
+    //MAC2CAP        
+    assert(params.numPhysCapRegs >=
+            numThreads * regClasses.at(CapRegClass)->numRegs());
+    //MAC2CAP
     assert(params.numPhysVecRegs >=
             numThreads * regClasses.at(VecRegClass)->numRegs());
     assert(params.numPhysVecPredRegs >=
@@ -942,6 +949,11 @@ CPU::getReg(PhysRegIdPtr phys_reg, ThreadID tid)
       case FloatRegClass:
         executeStats[tid]->numFpRegReads++;
         break;
+      //MAC2CAP 
+        case CapRegClass:
+        executeStats[tid]->numCapRegReads++;
+        break;
+      //MAC2CAP
       case CCRegClass:
         executeStats[tid]->numCCRegReads++;
         break;
@@ -968,6 +980,11 @@ CPU::getReg(PhysRegIdPtr phys_reg, void *val, ThreadID tid)
       case FloatRegClass:
         executeStats[tid]->numFpRegReads++;
         break;
+      //MAC2CAP 
+        case CapRegClass:
+        executeStats[tid]->numCapRegReads++;
+        break;
+      //MAC2CAP
       case CCRegClass:
         executeStats[tid]->numCCRegReads++;
         break;
@@ -1010,6 +1027,11 @@ CPU::setReg(PhysRegIdPtr phys_reg, RegVal val, ThreadID tid)
       case FloatRegClass:
         executeStats[tid]->numFpRegWrites++;
         break;
+      //MAC2CAP 
+        case CapRegClass:
+        executeStats[tid]->numCapRegWrites++;
+        break;
+      //MAC2CAP
       case CCRegClass:
         executeStats[tid]->numCCRegWrites++;
         break;
@@ -1036,6 +1058,11 @@ CPU::setReg(PhysRegIdPtr phys_reg, const void *val, ThreadID tid)
       case FloatRegClass:
         executeStats[tid]->numFpRegWrites++;
         break;
+        //MAC2CAP 
+        case CapRegClass:
+        executeStats[tid]->numCapRegWrites++;
+        break;
+      //MAC2CAP
       case CCRegClass:
         executeStats[tid]->numCCRegWrites++;
         break;

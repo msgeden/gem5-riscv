@@ -163,6 +163,11 @@ class BaseO3CPU(BaseCPU):
     numPhysFloatRegs = Param.Unsigned(
         256, "Number of physical floating point registers"
     )
+    #MAC2CAP
+    numPhysCapRegs = Param.Unsigned(
+        256, "Number of physical capability " "registers"
+    )
+    #MAC2CAP
     numPhysVecRegs = Param.Unsigned(256, "Number of physical vector registers")
     numPhysVecPredRegs = Param.Unsigned(
         32, "Number of physical predicate registers"

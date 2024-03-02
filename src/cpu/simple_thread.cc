@@ -72,6 +72,9 @@ SimpleThread::SimpleThread(BaseCPU *_cpu, int _thread_num, System *_sys,
       regFiles{{
           {*_isa->regClasses().at(IntRegClass)},
           {*_isa->regClasses().at(FloatRegClass)},
+          //MAC2CAP
+          {*_isa->regClasses().at(CapRegClass)},
+          //MAC2CAP
           {*_isa->regClasses().at(VecRegClass)},
           {*_isa->regClasses().at(VecElemClass)},
           {*_isa->regClasses().at(VecPredRegClass)},

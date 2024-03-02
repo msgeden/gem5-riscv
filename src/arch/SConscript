@@ -226,13 +226,21 @@ Export('ISADesc')
 
 DebugFlag('IntRegs')
 DebugFlag('FloatRegs')
+#MAC2CAP
+DebugFlag('CapRegs')
+#MAC2CAP    
 DebugFlag('VecRegs')
 DebugFlag('VecPredRegs')
 DebugFlag('MatRegs')
 DebugFlag('CCRegs')
 DebugFlag('MiscRegs')
-CompoundFlag('Registers', [ 'IntRegs', 'FloatRegs', 'VecRegs', 'VecPredRegs',
+#MAC2CAP
+#CompoundFlag('Registers', [ 'IntRegs', 'FloatRegs', 'VecRegs', 'VecPredRegs',
+#                            'MatRegs', 'CCRegs', 'MiscRegs' ])
+CompoundFlag('Registers', [ 'IntRegs', 'FloatRegs', 'CapRegs', 'VecRegs', 'VecPredRegs',
                             'MatRegs', 'CCRegs', 'MiscRegs' ])
+
+#MAC2CAP
 
 DebugFlag('Decoder', "Decoder debug output")
 DebugFlag('Faults', "Information about faults, exceptions, interrupts, etc")

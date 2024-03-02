@@ -152,6 +152,11 @@ class UnifiedFreeList
      *  @param _numPhysicalFloatRegs Number of physical fp registers.
      *  @param reservedFloatRegs Number of fp registers already
      *                           used by initial mappings.
+     * //MAC2CAP
+     *  @param _numPhysicalCapRegs Number of physical capability registers.
+     *  @param reservedCapRegs Number of capability registers already
+     *                           used by initial mappings.
+     * //MAC2CAP
      */
     UnifiedFreeList(const std::string &_my_name, PhysRegFile *_regFile);
 

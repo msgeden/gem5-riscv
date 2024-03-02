@@ -57,6 +57,9 @@
 #include "debug/CCRegs.hh"
 #include "debug/FloatRegs.hh"
 #include "debug/IntRegs.hh"
+//MAC2CAP
+#include "debug/CapRegs.hh"
+//MAC2CAP
 #include "debug/MatRegs.hh"
 #include "debug/VecPredRegs.hh"
 #include "debug/VecRegs.hh"

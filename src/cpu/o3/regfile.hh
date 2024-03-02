@@ -79,6 +79,12 @@ class PhysRegFile
     RegFile floatRegFile;
     std::vector<PhysRegId> floatRegIds;
 
+    //MAC2CAP
+    /** Capabilities register file. */
+    RegFile capRegFile;
+    std::vector<PhysRegId> capRegIds;
+    //MAC2CAP
+
     /** Vector register file. */
     RegFile vectorRegFile;
     std::vector<PhysRegId> vecRegIds;
@@ -111,6 +117,13 @@ class PhysRegFile
      * Number of physical floating point registers
      */
     unsigned numPhysicalFloatRegs;
+
+    //MAC2CAP
+    /**
+     * Number of physical capability registers
+     */
+    unsigned numPhysicalCapRegs;
+    //MAC2CAP
 
     /**
      * Number of physical vector registers
@@ -147,6 +160,9 @@ class PhysRegFile
      */
     PhysRegFile(unsigned _numPhysicalIntRegs,
                 unsigned _numPhysicalFloatRegs,
+                //MAC2CAP
+                unsigned _numPhysicalCapRegs,
+                //MAC2CAP
                 unsigned _numPhysicalVecRegs,
                 unsigned _numPhysicalVecPredRegs,
                 unsigned _numPhysicalMatRegs,
@@ -187,6 +203,13 @@ class PhysRegFile
             DPRINTF(IEW, "RegFile: Access to float register %i has data %#x\n",
                     idx, val);
             return val;
+          //MAC2CAP
+          case CapRegClass:
+            val = capRegFile.reg(idx);
+            DPRINTF(IEW, "RegFile: Access to capability register %i has data %#x\n",
+                    idx, val);
+            return val;
+          //MAC2CAP
           case VecElemClass:
             val = vectorElemRegFile.reg(idx);
             DPRINTF(IEW, "RegFile: Access to vector element register %i "
@@ -215,6 +238,11 @@ class PhysRegFile
           case FloatRegClass:
             *(RegVal *)val = getReg(phys_reg);
             break;
+          //MAC2CAP
+          case CapRegClass:
+            *(RegVal *)val = getReg(phys_reg);
+            break;
+          //MAC2CAP     
           case VecRegClass:
             vectorRegFile.get(idx, val);
             DPRINTF(IEW, "RegFile: Access to vector register %i, has "
@@ -278,6 +306,13 @@ class PhysRegFile
             DPRINTF(IEW, "RegFile: Setting float register %i to %#x\n",
                     idx, val);
             break;
+          //MAC2CAP
+          case CapRegClass:
+            capRegFile.reg(idx) = val;
+            DPRINTF(IEW, "RegFile: Setting capability register %i to %#x\n",
+                    idx, val);
+            break;
+          //MAC2CAP
           case VecElemClass:
             vectorElemRegFile.reg(idx) = val;
             DPRINTF(IEW, "RegFile: Setting vector element register %i to "

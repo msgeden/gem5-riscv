@@ -103,6 +103,9 @@ InstructionQueue::InstructionQueue(CPU *cpu_ptr, IEW *iew_ptr,
     // Set the number of total physical registers
     // As the vector registers have two addressing modes, they are added twice
     numPhysRegs = params.numPhysIntRegs + params.numPhysFloatRegs +
+                    //MAC2CAP
+                     + params.numPhysCapRegs +
+                    //MAC2CAP
                     params.numPhysVecRegs +
                     params.numPhysVecRegs * (
                             reg_classes.at(VecElemClass)->numRegs() /

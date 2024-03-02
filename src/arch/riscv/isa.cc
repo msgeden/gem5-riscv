@@ -44,6 +44,9 @@
 #include "arch/riscv/pcstate.hh"
 #include "arch/riscv/regs/float.hh"
 #include "arch/riscv/regs/int.hh"
+//MAC2CAP
+#include "arch/riscv/regs/cap.hh"
+//MAC2CAP
 #include "arch/riscv/regs/misc.hh"
 #include "arch/riscv/regs/vector.hh"
 #include "base/bitfield.hh"
@@ -261,6 +264,9 @@ ISA::ISA(const Params &p) : BaseISA(p),
 {
     _regClasses.push_back(&intRegClass);
     _regClasses.push_back(&floatRegClass);
+    //MAC2CAP
+    _regClasses.push_back(&capRegClass);
+    //MAC2CAP
     _regClasses.push_back(&vecRegClass);
     _regClasses.push_back(&vecElemClass);
     _regClasses.push_back(&vecPredRegClass);

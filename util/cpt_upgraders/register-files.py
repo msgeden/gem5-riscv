@@ -49,6 +49,9 @@ def upgrader(cpt):
         name_map = {
             "floatRegs.i": "regs.floating_point",
             "vecRegs": "regs.vector",
+            #MAC2CAP
+            "capRegs": "regs.capability",
+            #MAC2CAP
             "vecPredRegs": "regs.vector_predicate",
             "intRegs": "regs.integer",
             "ccRegs": "regs.condition_code",

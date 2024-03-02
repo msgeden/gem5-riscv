@@ -75,6 +75,10 @@ class RemoteGDB : public BaseRemoteGDB
             uint32_t gpr[int_reg::NumArchRegs];
             uint32_t pc;
             uint64_t fpu[float_reg::NumRegs];
+            //MAC2CAP
+            uint64_t cpr[cap_reg::NumRegs];
+            uint64_t cpc;
+            //MAC2CAP
             uint32_t fflags;
             uint32_t frm;
             uint32_t fcsr;

@@ -51,6 +51,9 @@ namespace o3
 
 PhysRegFile::PhysRegFile(unsigned _numPhysicalIntRegs,
                          unsigned _numPhysicalFloatRegs,
+                         //MAC2CAP
+                         unsigned _numPhysicalCapRegs,
+                         //MAC2CAP
                          unsigned _numPhysicalVecRegs,
                          unsigned _numPhysicalVecPredRegs,
                          unsigned _numPhysicalMatRegs,
@@ -58,6 +61,9 @@ PhysRegFile::PhysRegFile(unsigned _numPhysicalIntRegs,
                          const BaseISA::RegClasses &reg_classes)
     : intRegFile(*reg_classes.at(IntRegClass), _numPhysicalIntRegs),
       floatRegFile(*reg_classes.at(FloatRegClass), _numPhysicalFloatRegs),
+      //MAC2CAP
+      capRegFile(*reg_classes.at(CapRegClass), _numPhysicalCapRegs),
+      //MAC2CAP
       vectorRegFile(*reg_classes.at(VecRegClass), _numPhysicalVecRegs),
       vectorElemRegFile(*reg_classes.at(VecElemClass), _numPhysicalVecRegs * (
                   reg_classes.at(VecElemClass)->numRegs() /
@@ -68,6 +74,9 @@ PhysRegFile::PhysRegFile(unsigned _numPhysicalIntRegs,
       ccRegFile(*reg_classes.at(CCRegClass), _numPhysicalCCRegs),
       numPhysicalIntRegs(_numPhysicalIntRegs),
       numPhysicalFloatRegs(_numPhysicalFloatRegs),
+      //MAC2CAP
+      numPhysicalCapRegs(_numPhysicalCapRegs),
+      //MAC2CAP
       numPhysicalVecRegs(_numPhysicalVecRegs),
       numPhysicalVecElemRegs(_numPhysicalVecRegs * (
                   reg_classes.at(VecElemClass)->numRegs() /
@@ -77,6 +86,9 @@ PhysRegFile::PhysRegFile(unsigned _numPhysicalIntRegs,
       numPhysicalCCRegs(_numPhysicalCCRegs),
       totalNumRegs(_numPhysicalIntRegs
                    + _numPhysicalFloatRegs
+                   //MAC2CAP
+                   + _numPhysicalCapRegs
+                   //MAC2CAP
                    + _numPhysicalVecRegs
                    + numPhysicalVecElemRegs
                    + _numPhysicalVecPredRegs
@@ -98,6 +110,15 @@ PhysRegFile::PhysRegFile(unsigned _numPhysicalIntRegs,
         floatRegIds.emplace_back(*reg_classes.at(FloatRegClass),
                 phys_reg, flat_reg_idx++);
     }
+
+    //MAC2CAP
+    // The next batch of the registers are the capability physical
+    // registers; put them onto the capability free list.
+    for (phys_reg = 0; phys_reg < numPhysicalCapRegs; phys_reg++) {
+        capRegIds.emplace_back(*reg_classes.at(CapRegClass),
+                phys_reg, flat_reg_idx++);
+    }
+    //MAC2CAP
 
     // The next batch of the registers are the vector physical
     // registers; put them onto the vector free list.
@@ -160,6 +181,15 @@ PhysRegFile::initFreeList(UnifiedFreeList *freeList)
     }
     freeList->addRegs(floatRegIds.begin(), floatRegIds.end());
 
+    //MAC2CAP
+    // The next batch of the registers are the capability physical
+    // registers; put them onto the capability free list.
+    for (reg_idx = 0; reg_idx < numPhysicalCapRegs; reg_idx++) {
+        assert(capRegIds[reg_idx].index() == reg_idx);
+    }
+    freeList->addRegs(capRegIds.begin(), capRegIds.end());
+    //MAC2CAP
+    
     /* The next batch of the registers are the vector physical
      * registers; put them onto the vector free list. */
     for (reg_idx = 0; reg_idx < numPhysicalVecRegs; reg_idx++) {

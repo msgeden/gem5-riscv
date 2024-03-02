@@ -147,6 +147,9 @@
 #include "arch/riscv/pagetable_walker.hh"
 #include "arch/riscv/regs/float.hh"
 #include "arch/riscv/regs/int.hh"
+//MAC2CAP
+#include "arch/riscv/regs/cap.hh"
+//MAC2CAP
 #include "arch/riscv/regs/misc.hh"
 #include "arch/riscv/tlb.hh"
 #include "cpu/thread_state.hh"
@@ -446,6 +449,15 @@ RemoteGDB::Riscv64GdbRegCache::getRegs(ThreadContext *context)
     // Floating point registers
     for (int i = 0; i < float_reg::NumRegs; i++)
         r.fpu[i] = context->getReg(floatRegClass[i]);
+
+    // MAC2CAP
+    // Capability registers
+    for (int i = 0; i < cap_reg::NumArchRegs; i++) {
+        r.cpr[i] = context->getReg(capRegClass[i]);
+    }
+    r.cpc = context->pcState().instAddr();
+    // MAC2CAP
+
     r.fflags = context->readMiscRegNoEffect(
         CSRData.at(CSR_FFLAGS).physIndex) & RVxCSRMasks.at(CSR_FFLAGS);
     r.frm = context->readMiscRegNoEffect(

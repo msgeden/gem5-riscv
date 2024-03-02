@@ -131,7 +131,18 @@ registerName(RegId reg)
             return str.str();
         }
         return float_reg::RegNames[reg.index()];
-    } else if (reg.is(VecRegClass)) {
+    }
+    //MAC2CAP
+    else if (reg.is(CapRegClass)) {
+        if (reg.index() >= cap_reg::NumRegs) {
+            std::stringstream str;
+            str << "?? (c" << reg.index() << ')';
+            return str.str();
+        }
+        return cap_reg::RegNames[reg.index()];
+    } 
+    //MAC2CAP 
+    else if (reg.is(VecRegClass)) {
         if (reg.index() >= NumVecRegs) {
             std::stringstream str;
             str << "?? (v" << reg.index() << ')';

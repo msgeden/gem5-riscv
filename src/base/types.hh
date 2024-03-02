@@ -172,6 +172,10 @@ const Addr MaxAddr = (Addr)-1;
 
 using RegVal = uint64_t;
 
+//MAC2CAP
+using CapRegVal = uint64_t;
+//MAC2CAP
+
 // Logical register index type.
 using RegIndex = uint16_t;
 
