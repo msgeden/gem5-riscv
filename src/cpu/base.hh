@@ -744,6 +744,12 @@ class BaseCPU : public ClockedObject
         statistics::Scalar numFpRegReads;
         statistics::Scalar numFpRegWrites;
 
+        //MAC2CAP
+        /* Number of cap register file accesses */
+        statistics::Scalar numCapRegReads;
+        statistics::Scalar numCapRegWrites;
+        //MAC2CAP
+
         /* Number of integer alu accesses */
         statistics::Scalar numIntAluAccesses;
 

@@ -59,6 +59,9 @@ enum RegClassType
 {
     IntRegClass,        ///< Integer register
     FloatRegClass,      ///< Floating-point register
+    //MAC2CAP
+    CapRegClass,      ///< Capability register
+    //MAC2CAP
     /** Vector Register. */
     VecRegClass,
     /** Vector Register Native Elem lane. */
@@ -73,6 +76,9 @@ enum RegClassType
 // "Standard" register class names. Using these is encouraged but optional.
 inline constexpr char IntRegClassName[] = "integer";
 inline constexpr char FloatRegClassName[] = "floating_point";
+//MAC2CAP
+inline constexpr char CapRegClassName[] = "capability";
+//MAC2CAP
 inline constexpr char VecRegClassName[] = "vector";
 inline constexpr char VecElemClassName[] = "vector_element";
 inline constexpr char VecPredRegClassName[] = "vector_predicate";

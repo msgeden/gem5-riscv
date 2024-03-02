@@ -564,6 +564,12 @@ RemoteGDB::Riscv64GdbRegCache::setRegs(ThreadContext *context) const
     for (int i = 0; i < float_reg::NumRegs; i++)
         context->setReg(floatRegClass[i], r.fpu[i]);
 
+    //MAC2CAP
+    // Capability registers
+    for (int i = 0; i < cap_reg::NumRegs; i++)
+        context->setReg(capRegClass[i], r.cpr[i]);
+    //MAC2CAP
+
     setRegNoEffectWithMask(context, RV64, pms, CSR_FFLAGS, r.fflags);
     setRegNoEffectWithMask(context, RV64, pms, CSR_FRM, r.frm);
     setRegNoEffectWithMask(context, RV64, pms, CSR_FCSR, r.fcsr);

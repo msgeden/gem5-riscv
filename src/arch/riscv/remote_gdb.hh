@@ -37,6 +37,9 @@
 
 #include "arch/riscv/regs/float.hh"
 #include "arch/riscv/regs/int.hh"
+//MAC2CAP
+#include "arch/riscv/regs/cap.hh"
+//MAC2CAP
 #include "base/remote_gdb.hh"
 
 namespace gem5
@@ -168,6 +171,10 @@ class RemoteGDB : public BaseRemoteGDB
             uint32_t fflags;
             uint32_t frm;
             uint32_t fcsr;
+            //MAC2CAP
+            uint64_t cpr[cap_reg::NumArchRegs];
+            uint64_t cpc;
+            //MAC2CAP
             // Placeholder for byte alignment
             uint32_t placeholder;
             uint64_t cycle;

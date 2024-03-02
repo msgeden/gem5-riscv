@@ -51,6 +51,9 @@
 
 #include "arch/riscv/regs/float.hh"
 #include "arch/riscv/regs/int.hh"
+//MAC2CAP
+#include "arch/riscv/regs/cap.hh"
+//MAC2CAP
 #include "arch/riscv/regs/vector.hh"
 #include "base/types.hh"
 #include "cpu/reg_class.hh"

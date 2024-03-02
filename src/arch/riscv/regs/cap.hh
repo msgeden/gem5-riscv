@@ -137,12 +137,12 @@ const std::vector<std::string> RegNames = {
 
 // Semantically meaningful register indices
 inline constexpr auto
-    &CReturnAddrReg = cap_reg::Ra,
-    &CStackPointerReg = cap_reg::Sp,
-    &CThreadPointerReg = cap_reg::Tp,
-    &CReturnValueReg = cap_reg::A0,
-    &CAMOTempReg = cap_reg::Ureg0,
-    &CSyscallNumReg = cap_reg::A7;
+    &CReturnAddrReg = cap_reg::CRa,
+    &CStackPointerReg = cap_reg::CSp,
+    &CThreadPointerReg = cap_reg::CTp,
+    &CReturnValueReg = cap_reg::CA0,
+    &CAMOTempReg = cap_reg::CUreg0,
+    &CSyscallNumReg = cap_reg::CA7;
 
 inline constexpr RegId CArgumentRegs[] = {
     cap_reg::CA0, cap_reg::CA1, cap_reg::CA2, cap_reg::CA3,
