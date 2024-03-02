@@ -189,7 +189,7 @@ PhysRegFile::initFreeList(UnifiedFreeList *freeList)
     }
     freeList->addRegs(capRegIds.begin(), capRegIds.end());
     //MAC2CAP
-    
+
     /* The next batch of the registers are the vector physical
      * registers; put them onto the vector free list. */
     for (reg_idx = 0; reg_idx < numPhysicalVecRegs; reg_idx++) {

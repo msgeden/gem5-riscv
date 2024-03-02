@@ -200,7 +200,7 @@ CPU::CPU(const BaseO3CPUParams &params)
             numThreads * regClasses.at(IntRegClass)->numRegs());
     assert(params.numPhysFloatRegs >=
             numThreads * regClasses.at(FloatRegClass)->numRegs());
-    //MAC2CAP        
+    //MAC2CAP
     assert(params.numPhysCapRegs >=
             numThreads * regClasses.at(CapRegClass)->numRegs());
     //MAC2CAP
@@ -949,7 +949,7 @@ CPU::getReg(PhysRegIdPtr phys_reg, ThreadID tid)
       case FloatRegClass:
         executeStats[tid]->numFpRegReads++;
         break;
-      //MAC2CAP 
+      //MAC2CAP
         case CapRegClass:
         executeStats[tid]->numCapRegReads++;
         break;
@@ -980,7 +980,7 @@ CPU::getReg(PhysRegIdPtr phys_reg, void *val, ThreadID tid)
       case FloatRegClass:
         executeStats[tid]->numFpRegReads++;
         break;
-      //MAC2CAP 
+      //MAC2CAP
         case CapRegClass:
         executeStats[tid]->numCapRegReads++;
         break;
@@ -1027,7 +1027,7 @@ CPU::setReg(PhysRegIdPtr phys_reg, RegVal val, ThreadID tid)
       case FloatRegClass:
         executeStats[tid]->numFpRegWrites++;
         break;
-      //MAC2CAP 
+      //MAC2CAP
         case CapRegClass:
         executeStats[tid]->numCapRegWrites++;
         break;
@@ -1058,7 +1058,7 @@ CPU::setReg(PhysRegIdPtr phys_reg, const void *val, ThreadID tid)
       case FloatRegClass:
         executeStats[tid]->numFpRegWrites++;
         break;
-        //MAC2CAP 
+        //MAC2CAP
         case CapRegClass:
         executeStats[tid]->numCapRegWrites++;
         break;

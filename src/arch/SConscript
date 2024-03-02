@@ -228,7 +228,7 @@ DebugFlag('IntRegs')
 DebugFlag('FloatRegs')
 #MAC2CAP
 DebugFlag('CapRegs')
-#MAC2CAP    
+#MAC2CAP
 DebugFlag('VecRegs')
 DebugFlag('VecPredRegs')
 DebugFlag('MatRegs')

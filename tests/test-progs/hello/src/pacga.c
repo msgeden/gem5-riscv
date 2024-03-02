@@ -4,7 +4,7 @@
 // Sign a message using PAC instructions
 uint32_t sign(uint64_t msg, uint64_t mod) {
     uint64_t mac=0;
-    
+
     asm volatile("pacga x2, x0, x1" : "=r"(mac) : "r"(msg),"r"(mod));
     asm volatile("nop");
     asm volatile("nop");
@@ -12,7 +12,7 @@ uint32_t sign(uint64_t msg, uint64_t mod) {
     asm volatile("nop");
     asm volatile("nop");
     asm volatile("nop");
-    
+
     //printf("\n64-mac:%lu",mac);
     mac >>= 32;
     //printf("\n32-mac:%lu",mac);
@@ -58,4 +58,3 @@ int main() {
     }
     return 0;
 }
-

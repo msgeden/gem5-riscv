@@ -140,8 +140,8 @@ registerName(RegId reg)
             return str.str();
         }
         return cap_reg::RegNames[reg.index()];
-    } 
-    //MAC2CAP 
+    }
+    //MAC2CAP
     else if (reg.is(VecRegClass)) {
         if (reg.index() >= NumVecRegs) {
             std::stringstream str;

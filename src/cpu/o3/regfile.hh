@@ -242,7 +242,7 @@ class PhysRegFile
           case CapRegClass:
             *(RegVal *)val = getReg(phys_reg);
             break;
-          //MAC2CAP     
+          //MAC2CAP
           case VecRegClass:
             vectorRegFile.get(idx, val);
             DPRINTF(IEW, "RegFile: Access to vector register %i, has "
