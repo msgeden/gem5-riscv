@@ -1,6 +1,6 @@
 // -*- mode:c++ -*-
 
-// Copyright (c) 2015 RISC-V Foundation
+// Copyright (c) 2015 Riscv Developers
 // Copyright (c) 2016-2017 The University of Virginia
 // Copyright (c) 2020 Barkhausen Institut
 // All rights reserved.
@@ -28,25 +28,28 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-// Include the basic format
-##include "basic.isa"
+////////////////////////////////////////////////////////////////////
+//
+// Capability operation instructions
+//
+def template CapExecute {{
+    Fault %(class_name)s::execute(ExecContext *xc,
+        trace::InstRecord *traceData) const
+    {
 
-// Include the type formats
-##include "standard.isa"
-##include "mem.isa"
-##include "fp.isa"
-##include "cap.isa"
-##include "amo.isa"
-##include "bs.isa"
-##include "vector_conf.isa"
-##include "vector_arith.isa"
-##include "vector_mem.isa"
+        %(op_decl)s;
+        %(op_rd)s;
+        %(code)s;
+        %(op_wb)s;
 
-// Include formats for nonstandard extensions
-##include "compressed.isa"
+        return NoFault;
+    }
+}};
 
-// Pseudo operations
-##include "m5ops.isa"
-
-// Include the unknown
-##include "unknown.isa"
+def format CapROp(code, *opt_flags) {{
+    iop = InstObjParams(name, Name, 'RegOp', code, opt_flags)
+    header_output = BasicDeclare.subst(iop)
+    decoder_output = BasicConstructor.subst(iop)
+    decode_block = BasicDecode.subst(iop)
+    exec_output = CapExecute.subst(iop)
+}};

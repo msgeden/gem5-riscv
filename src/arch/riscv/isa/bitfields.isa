@@ -38,6 +38,16 @@ def bitfield RVTYPE rv_type;
 def bitfield QUADRANT <1:0>;
 def bitfield OPCODE5 <6:2>;
 
+//MAC2CAP
+// CR-Type
+def bitfield ALL	<31:0>;
+def bitfield CRD     <11:7>;
+def bitfield FUNCT3 <14:12>;
+def bitfield CRS1    <19:15>;
+def bitfield CRS2    <24:20>;
+def bitfield FUNCT7 <31:25>;
+//MAC2CAP
+
 // R-Type
 def bitfield ALL	<31:0>;
 def bitfield RD     <11:7>;

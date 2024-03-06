@@ -155,6 +155,9 @@ class StaticInst : public RefCounted, public StaticInstFlags
 
     bool isInteger()      const { return flags[IsInteger]; }
     bool isFloating()     const { return flags[IsFloating]; }
+    //MAC2CAP
+    bool isCap()      const { return flags[IsCap]; }
+    //MAC2CAP
     bool isVector()       const { return flags[IsVector]; }
     bool isMatrix()       const { return flags[IsMatrix]; }
 

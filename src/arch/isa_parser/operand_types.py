@@ -259,6 +259,12 @@ class FloatRegOperandDesc(RegOperandDesc):
     def __init__(self, *args, **kwargs):
         super().__init__("floatRegClass", RegValOperand, *args, **kwargs)
 
+#MAC2CAP
+class CapRegOperandDesc(RegOperandDesc):
+    def __init__(self, *args, **kwargs):
+        super().__init__("capRegClass", RegValOperand, *args, **kwargs)
+#MAC2CAP
+
 
 class CCRegOperandDesc(RegOperandDesc):
     def __init__(self, *args, **kwargs):

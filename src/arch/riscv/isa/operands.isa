@@ -37,6 +37,7 @@ def operand_types {{
     'uw' : 'uint32_t',
     'sd' : 'int64_t',
     'ud' : 'uint64_t',
+    'cud' : 'std::array<uint64_t, 4>',
     'sf' : 'float',
     'df' : 'double',
 
@@ -86,6 +87,21 @@ def operands {{
     'Fc2_bits': FloatRegOp('ud', 'FC2', 'IsFloating', 2),
     'Fp2': FloatRegOp('df', 'FP2 + 8', 'IsFloating', 2),
     'Fp2_bits': FloatRegOp('ud', 'FP2 + 8', 'IsFloating', 2),
+
+
+    #MAC2CAP
+    'CRd': CapRegOp('ud', 'CRD', 'IsCap', 1),
+    'CRs1': CapRegOp('ud', 'CRS1', 'IsCap', 2),
+    'CRs2': CapRegOp('ud', 'CRS2', 'IsCap', 3),
+    'CRt': CapRegOp('ud', 'CAMOTempReg', 'IsCap', 4),
+    'CRc1': CapRegOp('ud', 'CRC1', 'IsCap', 2),
+    'CRc2': CapRegOp('ud', 'CRC2', 'IsCap', 3),
+    'CRp1': CapRegOp('ud', 'CRP1 + 8', 'IsCap', 2),
+    'CRp2': CapRegOp('ud', 'CRP2 + 8', 'IsCap', 3),
+    'Cra': CapRegOp('ud', 'CReturnAddrReg', 'IsCap', 1),
+    'Csp': CapRegOp('ud', 'CStackPointerReg', 'IsCap', 2),
+    #MAC2CAP
+
 
     'Vd':  VecRegOp('vc', 'VD', 'IsVector', 1),
     'Vs1': VecRegOp('vc', 'VS1', 'IsVector', 2),

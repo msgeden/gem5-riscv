@@ -564,6 +564,9 @@ class ISAParser(Grammar):
                 "overrideInOperand": overrideInOperand,
                 "IntRegOp": IntRegOperandDesc,
                 "FloatRegOp": FloatRegOperandDesc,
+                #MAC2CAP
+                "CapRegOp": CapRegOperandDesc,
+                #MAC2CAP
                 "CCRegOp": CCRegOperandDesc,
                 "VecElemOp": VecElemOperandDesc,
                 "VecRegOp": VecRegOperandDesc,

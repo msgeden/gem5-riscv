@@ -46,6 +46,9 @@ class OpClass(Enum):
         "IntAlu",
         "IntMult",
         "IntDiv",
+        #MAC2CAP
+        "CapAlu",
+        #MAC2CAP
         "FloatAdd",
         "FloatCmp",
         "FloatCvt",
